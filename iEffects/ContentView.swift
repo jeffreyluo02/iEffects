@@ -38,7 +38,7 @@ struct ContentView: View {
                         Button(action: {
                             self.audioRecorder.stopRecording()
                         }) {
-                            Image(systemName: "mic.circle")
+                            Image(systemName: "stop.circle")
                                 .renderingMode(.original)
                                 .resizable()
                                 .scaledToFit()
@@ -49,6 +49,7 @@ struct ContentView: View {
                     Text(audioRecorder.recording ? "Stop Recording" : "Record Audio")
                         .font(.caption)
                 }
+                RecordingsList(audioRecorder: audioRecorder)
             }
         }
     }

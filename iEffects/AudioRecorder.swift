@@ -11,11 +11,28 @@ import SwiftUI
 import Combine
 import AVFoundation
 
-class AudioRecorder: ObservableObject {
+class AudioRecorder: NSObject, ObservableObject {
+    
+    // fetch recordings on app start
+    override init() {
+        super.init()
+        fetchRecordings()
+    }
     
     var audioRecorder : AVAudioRecorder!
     
-    @Published var recording = false
+    // array of our recordings
+    var recordings = [Recording]()
+    
+    let objectWillChange = PassthroughSubject<AudioRecorder, Never>()
+
+    // boolean for whether we are recording or not
+    var recording = false {
+        // update observing views
+        didSet {
+            objectWillChange.send(self)
+        }
+    }
     
     // function for recording audio
     func startRecording() {
@@ -52,6 +69,29 @@ class AudioRecorder: ObservableObject {
     func stopRecording() {
         audioRecorder.stop()
         recording = false
+        
+        fetchRecordings()
+    }
+    
+    // access our stored recordings
+    func fetchRecordings() {
+        // refresh the array by removing everything
+        recordings.removeAll()
+        
+        let fileManager = FileManager.default
+        let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let directoryContents = try! fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil)
+        
+        // cycle through audio files
+        for audio in directoryContents {
+            let recording = Recording(fileURL: audio, createdAt: getCreationDate(for: audio))
+            recordings.append(recording)
+        }
+        // sort the recordings by date
+        recordings.sort(by: { $0.createdAt.compare($1.createdAt) == .orderedAscending})
+        
+        // update all observing views
+        objectWillChange.send(self)
     }
     
 }
