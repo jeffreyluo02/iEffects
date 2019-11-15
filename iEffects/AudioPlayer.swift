@@ -8,47 +8,120 @@
 
 import Foundation
 import SwiftUI
-import Combine
 import AVFoundation
 
 class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
     
-    let objectWillChange = PassthroughSubject<AudioPlayer, Never>()
+    @Published var isPlaying = false
     
-    var isPlaying = false {
-        didSet {
-            objectWillChange.send(self)
+    var audioEngine: AVAudioEngine!
+    var audioFile: AVAudioFile!
+    
+    // plays the audio without any manipulation
+    func startPlayBack(audio: URL) {
+        do {
+            // setup audio player with file
+            audioEngine = AVAudioEngine()
+            audioFile = try AVAudioFile(forReading: audio)
+        } catch {
+            print("Setting up playAudio failed.")
         }
+        // reset the audio engine
+        audioEngine.stop()
+        audioEngine.reset()
+        
+        let audioPlayerNode = AVAudioPlayerNode()
+        
+        audioEngine.attach(audioPlayerNode)
+        
+        audioEngine.connect(audioPlayerNode, to: audioEngine.outputNode, format: nil)
+        
+        audioPlayerNode.scheduleFile(audioFile, at: nil, completionHandler: nil)
+        do {
+            try audioEngine.start()
+        } catch {
+            print("playAudio audioEngine could not be started")
+        }
+        audioPlayerNode.play()
+        
+        isPlaying = true
     }
     
-    var audioPlayer: AVAudioPlayer!
+    // NOTE: This won't show if the audio is finished playing or not
+    func playAudioWithVariablePitch(audio: URL, pitch: Float) {
+        do {
+            // setup audio player with file
+            audioEngine = AVAudioEngine()
+            audioFile = try AVAudioFile(forReading: audio)
+        } catch {
+            print("Setting up pitch change failed.")
+        }
+        // reset the audio engine
+        audioEngine.stop()
+        audioEngine.reset()
+        
+        let audioPlayerNode = AVAudioPlayerNode()
+        
+        audioEngine.attach(audioPlayerNode)
+        
+        let changePitchEffect = AVAudioUnitTimePitch()
+        changePitchEffect.pitch = pitch
+        audioEngine.attach(changePitchEffect)
+        
+        audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
+        audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
+        
+        audioPlayerNode.scheduleFile(audioFile, at: nil, completionHandler: nil)
+        do {
+            try audioEngine.start()
+        } catch {
+            print("Pitch shift audioEngine could not be started")
+        }
+        audioPlayerNode.play()
+        
+        isPlaying = true
+    }
     
-    func startPlayback (audio: URL) {
-        let playbackSession = AVAudioSession.sharedInstance()
-        // play the audio over the loudspeakers
+    
+    func playAudioWithReverb(audio: URL, wetness: Float) {
         do {
-            try playbackSession.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
+            // setup audio player with file
+            audioEngine = AVAudioEngine()
+            audioFile = try AVAudioFile(forReading: audio)
         } catch {
-            print("Playing over the device's speakers failed")
+            print("Setting up pitch change failed.")
         }
+        // reset the audio engine
+        audioEngine.stop()
+        audioEngine.reset()
+        
+        let audioPlayerNode = AVAudioPlayerNode()
+        
+        audioEngine.attach(audioPlayerNode)
+        
+        let reverbEffect = AVAudioUnitReverb()
+        reverbEffect.wetDryMix = wetness
+        audioEngine.attach(reverbEffect)
+        
+        audioEngine.connect(audioPlayerNode, to: reverbEffect, format: nil)
+        audioEngine.connect(reverbEffect, to: audioEngine.outputNode, format: nil)
+        
+        audioPlayerNode.scheduleFile(audioFile, at: nil, completionHandler: nil)
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: audio)
-            audioPlayer.delegate = self
-            audioPlayer.play()
-            isPlaying = true
+            try audioEngine.start()
         } catch {
-            print("Playback failed.")
+            print("Pitch shift audioEngine could not be started")
         }
+        audioPlayerNode.play()
+        
+        isPlaying = true
     }
     
     func stopPlayback() {
-        audioPlayer.stop()
-        isPlaying = false
-    }
-    
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        if flag {
-            isPlaying = false
+        if(audioEngine.isRunning) {
+            audioEngine.stop()
+            audioEngine.reset()
         }
+        isPlaying = false
     }
 }

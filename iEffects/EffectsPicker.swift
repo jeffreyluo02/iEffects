@@ -11,14 +11,59 @@ import SwiftUI
 struct EffectsPicker: View {
     var body: some View {
         ZStack {
+            LinearGradient(gradient: Gradient(colors: [.gray, .white]), startPoint: .bottom, endPoint: .top).edgesIgnoringSafeArea(.all)
             VStack {
                 HStack {
-                    Text("A")
-                    Text("A")
+                    Button(action: {
+                        // do something
+                    }) {
+                        Image(systemName: "wind")
+                            .renderingMode(.original)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 100, height: 100)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
+                            .shadow(color: .black, radius: 2)
+                    }
+                    Button(action: {
+                        // do something
+                    }) {
+                        Image(systemName: "snow")
+                            .renderingMode(.original)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 100, height: 100)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
+                            .shadow(color: .black, radius: 2)
+                    }
                 }
                 HStack {
-                    Text("A")
-                    Text("A")
+                    Button(action: {
+                        // do something
+                    }) {
+                        Image(systemName: "flame")
+                            .renderingMode(.original)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 100, height: 100)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
+                            .shadow(color: .black, radius: 2)
+                    }
+                    Button(action: {
+                        // do something
+                    }) {
+                        Image(systemName: "tropicalstorm")
+                            .renderingMode(.original)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 100, height: 100)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
+                            .shadow(color: .black, radius: 2)
+                    }
                 }
             }
         }

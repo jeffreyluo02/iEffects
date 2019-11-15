@@ -32,7 +32,9 @@ struct ContentView: View {
                                     .renderingMode(.original)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 100, height: 100)
+                                    .frame(width: 180, height: 180)
+                                    .clipShape(Capsule())
+                                    .shadow(color: .black, radius: 1)
                             }
                         }
                         else {
@@ -43,7 +45,9 @@ struct ContentView: View {
                                     .renderingMode(.original)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 100, height: 100)
+                                    .frame(width: 180, height: 180)
+                                    .clipShape(Capsule())
+                                    .shadow(color: .black, radius: 1)
                             }
                         }
                         // Display "Record" if not recording, and display "Stop Recording" if recording

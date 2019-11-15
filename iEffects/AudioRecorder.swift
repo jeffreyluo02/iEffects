@@ -69,7 +69,6 @@ class AudioRecorder: NSObject, ObservableObject {
     func stopRecording() {
         audioRecorder.stop()
         recording = false
-        
         fetchRecordings()
     }
     

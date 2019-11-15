@@ -10,7 +10,7 @@ import SwiftUI
 
 struct RecordingsList: View {
     
-    @ObservedObject var audioRecorder: AudioRecorder
+    @ObservedObject var audioRecorder = AudioRecorder()
     
     var body: some View {
         List {
@@ -43,7 +43,7 @@ struct RecordingRow: View {
             Spacer()
             if audioPlayer.isPlaying == false {
             Button(action: {
-                self.audioPlayer.startPlayback(audio: self.audioURL)
+                self.audioPlayer.playAudioWithReverb(audio: self.audioURL, wetness: 100)
             })  {
                 Image(systemName: "play.circle")
                 }
