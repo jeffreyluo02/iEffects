@@ -34,7 +34,7 @@ struct ContentView: View {
                                     .scaledToFit()
                                     .frame(width: 180, height: 180)
                                     .clipShape(Capsule())
-                                    .shadow(color: .black, radius: 1)
+                                    .shadow(color: .white, radius: 2)
                             }
                         }
                         else {
@@ -47,7 +47,7 @@ struct ContentView: View {
                                     .scaledToFit()
                                     .frame(width: 180, height: 180)
                                     .clipShape(Capsule())
-                                    .shadow(color: .black, radius: 1)
+                                    .shadow(color: .white, radius: 2)
                             }
                         }
                         // Display "Record" if not recording, and display "Stop Recording" if recording
@@ -57,7 +57,7 @@ struct ContentView: View {
                     NavigationLink(destination: RecordingsList(audioRecorder: audioRecorder)) {
                         Text("View Recordings")
                     }
-                    NavigationLink(destination: EffectsPicker()) {
+                    NavigationLink(destination: EffectsPicker(audioRecorder: audioRecorder)) {
                         Text("View Effects ")
                     }
                 }

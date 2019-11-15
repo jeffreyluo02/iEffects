@@ -43,7 +43,7 @@ struct RecordingRow: View {
             Spacer()
             if audioPlayer.isPlaying == false {
             Button(action: {
-                self.audioPlayer.playAudioWithReverb(audio: self.audioURL, wetness: 100)
+                self.audioPlayer.playAudioWithSpeedChange(audio: self.audioURL, rate: 2.0)
             })  {
                 Image(systemName: "play.circle")
                 }
