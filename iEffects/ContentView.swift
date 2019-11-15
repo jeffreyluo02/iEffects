@@ -13,43 +13,50 @@ struct ContentView: View {
     @ObservedObject var audioRecorder : AudioRecorder
     
     var body: some View {
-        ZStack {
-            LinearGradient(gradient: Gradient(colors: [.gray, .white]), startPoint: .bottom, endPoint: .top).edgesIgnoringSafeArea(.all)
-            
-            VStack(spacing: 100) {
-                Text("iEffects")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+        NavigationView {
+            ZStack {
+                LinearGradient(gradient: Gradient(colors: [.gray, .white]), startPoint: .bottom, endPoint: .top).edgesIgnoringSafeArea(.all)
                 
-                VStack(spacing: 10) {
-                    // Display different buttons depending on if we are currently recording or not
-                    if audioRecorder.recording == false {
-                        Button(action: {
-                            self.audioRecorder.startRecording()
-                        }) {
-                            Image(systemName: "mic.circle")
-                                .renderingMode(.original)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 100, height: 100)
+                VStack(spacing: 100) {
+                    Text("iEffects")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                    
+                    VStack(spacing: 10) {
+                        // Display different buttons depending on if we are currently recording or not
+                        if audioRecorder.recording == false {
+                            Button(action: {
+                                self.audioRecorder.startRecording()
+                            }) {
+                                Image(systemName: "mic.circle")
+                                    .renderingMode(.original)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 100, height: 100)
+                            }
                         }
-                    }
-                    else {
-                        Button(action: {
-                            self.audioRecorder.stopRecording()
-                        }) {
-                            Image(systemName: "stop.circle")
-                                .renderingMode(.original)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 100, height: 100)
+                        else {
+                            Button(action: {
+                                self.audioRecorder.stopRecording()
+                            }) {
+                                Image(systemName: "stop.circle")
+                                    .renderingMode(.original)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 100, height: 100)
+                            }
                         }
+                        // Display "Record" if not recording, and display "Stop Recording" if recording
+                        Text(audioRecorder.recording ? "Stop Recording" : "Record Audio")
+                            .font(.caption)
                     }
-                    // Display "Record" if not recording, and display "Stop Recording" if recording
-                    Text(audioRecorder.recording ? "Stop Recording" : "Record Audio")
-                        .font(.caption)
+                    NavigationLink(destination: RecordingsList(audioRecorder: audioRecorder)) {
+                        Text("View Recordings")
+                    }
+                    NavigationLink(destination: EffectsPicker()) {
+                        Text("View Effects ")
+                    }
                 }
-                RecordingsList(audioRecorder: audioRecorder)
             }
         }
     }

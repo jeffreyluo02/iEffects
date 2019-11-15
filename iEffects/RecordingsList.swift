@@ -13,16 +13,14 @@ struct RecordingsList: View {
     @ObservedObject var audioRecorder: AudioRecorder
     
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(audioRecorder.recordings, id: \.createdAt) { recording in
-                    RecordingRow(audioURL: recording.fileURL)
-                }
-                .onDelete(perform: delete)
+        List {
+            ForEach(audioRecorder.recordings, id: \.createdAt) { recording in
+                RecordingRow(audioURL: recording.fileURL)
             }
-        .navigationBarTitle("Recordings")
-        .navigationBarItems(trailing: EditButton())
+            .onDelete(perform: delete)
         }
+        .navigationBarTitle(Text("Recordings"), displayMode: .inline)
+        .navigationBarItems(trailing: EditButton())
     }
     
     func delete(at offsets: IndexSet) {
@@ -62,6 +60,8 @@ struct RecordingRow: View {
 
 struct RecordingsList_Previews: PreviewProvider {
     static var previews: some View {
-        RecordingsList(audioRecorder: AudioRecorder())
+        NavigationView {
+            RecordingsList(audioRecorder: AudioRecorder())
+        }
     }
 }

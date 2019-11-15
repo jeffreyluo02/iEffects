@@ -25,14 +25,12 @@ class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
     
     func startPlayback (audio: URL) {
         let playbackSession = AVAudioSession.sharedInstance()
-        
         // play the audio over the loudspeakers
         do {
             try playbackSession.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
         } catch {
             print("Playing over the device's speakers failed")
         }
-        
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: audio)
             audioPlayer.delegate = self

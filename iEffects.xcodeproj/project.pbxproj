@@ -19,6 +19,7 @@
 		8D4F651C237BBB53003A13C3 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4F651B237BBB53003A13C3 /* Helper.swift */; };
 		8D4F651E237BBF09003A13C3 /* RecordingsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4F651D237BBF09003A13C3 /* RecordingsList.swift */; };
 		8D4F6520237BC414003A13C3 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4F651F237BC414003A13C3 /* AudioPlayer.swift */; };
+		8DDFA857237DC5BC0033E603 /* EffectsPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDFA856237DC5BC0033E603 /* EffectsPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		8D4F651B237BBB53003A13C3 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		8D4F651D237BBF09003A13C3 /* RecordingsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsList.swift; sourceTree = "<group>"; };
 		8D4F651F237BC414003A13C3 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		8DDFA856237DC5BC0033E603 /* EffectsPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectsPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				8D4F6501237BA2D0003A13C3 /* SceneDelegate.swift */,
 				8D4F6503237BA2D0003A13C3 /* ContentView.swift */,
 				8D4F651D237BBF09003A13C3 /* RecordingsList.swift */,
+				8DDFA856237DC5BC0033E603 /* EffectsPicker.swift */,
 				8D4F6513237BAAFB003A13C3 /* AudioRecorder.swift */,
 				8D4F651F237BC414003A13C3 /* AudioPlayer.swift */,
 				8D4F651B237BBB53003A13C3 /* Helper.swift */,
@@ -164,6 +167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DDFA857237DC5BC0033E603 /* EffectsPicker.swift in Sources */,
 				8D4F6516237BB042003A13C3 /* Extensions.swift in Sources */,
 				8D4F651C237BBB53003A13C3 /* Helper.swift in Sources */,
 				8D4F6520237BC414003A13C3 /* AudioPlayer.swift in Sources */,
