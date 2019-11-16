@@ -11,6 +11,8 @@ import SwiftUI
 struct EffectsPicker: View {
     
     @ObservedObject var audioRecorder : AudioRecorder
+    @State private var showingPlaybackView = false
+    @State private var showingPitchView = false
     
     var body: some View {
         NavigationView {
@@ -20,7 +22,7 @@ struct EffectsPicker: View {
                     HStack(spacing: 20) {
                         VStack {
                             Button(action: {
-                                // do pitch shift
+                                self.showingPlaybackView.toggle()
                             }) {
                                 Image(systemName: "wind")
                                     .renderingMode(.original)
@@ -31,12 +33,15 @@ struct EffectsPicker: View {
                                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
                                     .shadow(color: .black, radius: 2)
                             }
-                            Text("Pitch Shift")
+                            .sheet(isPresented: $showingPlaybackView) {
+                                PlaybackView()
+                            }
+                            Text("Playback")
                                 .font(.caption)
                         }
                         VStack {
                             Button(action: {
-                                // do reverb
+                                self.showingPitchView.toggle()
                             }) {
                                 Image(systemName: "snow")
                                     .renderingMode(.original)
@@ -47,7 +52,10 @@ struct EffectsPicker: View {
                                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
                                     .shadow(color: .black, radius: 2)
                             }
-                            Text("Reverb")
+                            .sheet(isPresented: $showingPitchView) {
+                                PitchView()
+                            }
+                            Text("Pitch")
                                 .font(.caption)
                         }
                     }
@@ -68,6 +76,40 @@ struct EffectsPicker: View {
                             Text("Speed Change")
                                 .font(.caption)
                         }
+                        VStack {
+                            Button(action: {
+                                // do distortion
+                            }) {
+                                Image(systemName: "tropicalstorm")
+                                    .renderingMode(.original)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 100, height: 100)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
+                                    .shadow(color: .black, radius: 2)
+                            }
+                            Text("Distortion")
+                                .font(.caption)
+                        }
+                    }
+                    HStack(spacing: 20) {
+                        VStack {
+                            Button(action: {
+                                // do speed
+                                }) {
+                                Image(systemName: "flame")
+                                    .renderingMode(.original)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 100, height: 100)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
+                                    .shadow(color: .black, radius: 2)
+                                }
+                                Text("Speed Change")
+                                    .font(.caption)
+                            }
                         VStack {
                             Button(action: {
                                 // do distortion
