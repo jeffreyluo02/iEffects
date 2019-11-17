@@ -22,6 +22,7 @@
 		8DA713EB237F8DB300C3ACDE /* PlaybackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA713EA237F8DB300C3ACDE /* PlaybackView.swift */; };
 		8DA713ED237F8EBE00C3ACDE /* PitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA713EC237F8EBE00C3ACDE /* PitchView.swift */; };
 		8DDFA857237DC5BC0033E603 /* EffectsPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDFA856237DC5BC0033E603 /* EffectsPicker.swift */; };
+		8DE8D47D2381021200DDA32E /* ReverbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE8D47C2381021200DDA32E /* ReverbView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		8DA713EA237F8DB300C3ACDE /* PlaybackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackView.swift; sourceTree = "<group>"; };
 		8DA713EC237F8EBE00C3ACDE /* PitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchView.swift; sourceTree = "<group>"; };
 		8DDFA856237DC5BC0033E603 /* EffectsPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectsPicker.swift; sourceTree = "<group>"; };
+		8DE8D47C2381021200DDA32E /* ReverbView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverbView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				8D4F651D237BBF09003A13C3 /* RecordingsList.swift */,
 				8DDFA856237DC5BC0033E603 /* EffectsPicker.swift */,
 				8DA713EC237F8EBE00C3ACDE /* PitchView.swift */,
+				8DE8D47C2381021200DDA32E /* ReverbView.swift */,
 				8DA713EA237F8DB300C3ACDE /* PlaybackView.swift */,
 				8D4F6513237BAAFB003A13C3 /* AudioRecorder.swift */,
 				8D4F651F237BC414003A13C3 /* AudioPlayer.swift */,
@@ -182,6 +185,7 @@
 				8D4F6500237BA2D0003A13C3 /* AppDelegate.swift in Sources */,
 				8D4F651E237BBF09003A13C3 /* RecordingsList.swift in Sources */,
 				8D4F6502237BA2D0003A13C3 /* SceneDelegate.swift in Sources */,
+				8DE8D47D2381021200DDA32E /* ReverbView.swift in Sources */,
 				8D4F651A237BB92F003A13C3 /* RecordingDataModel.swift in Sources */,
 				8D4F6514237BAAFB003A13C3 /* AudioRecorder.swift in Sources */,
 				8D4F6504237BA2D0003A13C3 /* ContentView.swift in Sources */,

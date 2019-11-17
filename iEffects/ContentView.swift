@@ -51,14 +51,21 @@ struct ContentView: View {
                             }
                         }
                         // Display "Record" if not recording, and display "Stop Recording" if recording
-                        Text(audioRecorder.recording ? "Stop Recording" : "Record Audio")
-                            .font(.caption)
+                        Text(audioRecorder.recording ? "Tap to Stop Recording" : "Tap to Record Audio")
+                            .fontWeight(.bold)
                     }
-                    NavigationLink(destination: RecordingsList(audioRecorder: audioRecorder)) {
-                        Text("View Recordings")
-                    }
+                    VStack {
                     NavigationLink(destination: EffectsPicker(audioRecorder: audioRecorder)) {
-                        Text("View Effects ")
+                        Image(systemName: "arrow.right")
+                        .resizable()
+                            .renderingMode(.original)
+                        .scaledToFit()
+                            .frame(width: 50, height: 50)
+                            .opacity(0.7)
+                        }
+                        Text("Skip")
+                        
+                        
                     }
                 }
             }

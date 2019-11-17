@@ -13,6 +13,7 @@ struct EffectsPicker: View {
     @ObservedObject var audioRecorder : AudioRecorder
     @State private var showingPlaybackView = false
     @State private var showingPitchView = false
+    @State private var showingReverbView = false
     
     var body: some View {
         NavigationView {
@@ -31,7 +32,7 @@ struct EffectsPicker: View {
                                     .frame(width: 100, height: 100)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
-                                    .shadow(color: .black, radius: 2)
+    
                             }
                             .sheet(isPresented: $showingPlaybackView) {
                                 PlaybackView()
@@ -50,7 +51,6 @@ struct EffectsPicker: View {
                                     .frame(width: 100, height: 100)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
-                                    .shadow(color: .black, radius: 2)
                             }
                             .sheet(isPresented: $showingPitchView) {
                                 PitchView()
@@ -62,7 +62,7 @@ struct EffectsPicker: View {
                     HStack(spacing: 20) {
                         VStack {
                             Button(action: {
-                                // do speed
+                                self.showingReverbView.toggle()
                             }) {
                                 Image(systemName: "flame")
                                     .renderingMode(.original)
@@ -71,9 +71,12 @@ struct EffectsPicker: View {
                                     .frame(width: 100, height: 100)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
-                                    .shadow(color: .black, radius: 2)
+                 
                             }
-                            Text("Speed Change")
+                            .sheet(isPresented: $showingReverbView) {
+                                ReverbView()
+                            }
+                            Text("Reverb")
                                 .font(.caption)
                         }
                         VStack {
@@ -87,7 +90,7 @@ struct EffectsPicker: View {
                                     .frame(width: 100, height: 100)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
-                                    .shadow(color: .black, radius: 2)
+   
                             }
                             Text("Distortion")
                                 .font(.caption)
@@ -105,7 +108,7 @@ struct EffectsPicker: View {
                                     .frame(width: 100, height: 100)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
-                                    .shadow(color: .black, radius: 2)
+        
                                 }
                                 Text("Speed Change")
                                     .font(.caption)
@@ -121,7 +124,6 @@ struct EffectsPicker: View {
                                     .frame(width: 100, height: 100)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
-                                    .shadow(color: .black, radius: 2)
                             }
                             Text("Distortion")
                                 .font(.caption)
