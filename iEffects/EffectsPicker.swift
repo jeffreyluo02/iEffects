@@ -14,6 +14,7 @@ struct EffectsPicker: View {
     @State private var showingPlaybackView = false
     @State private var showingPitchView = false
     @State private var showingReverbView = false
+    @State private var showingDelayView = false
     
     var body: some View {
         NavigationView {
@@ -81,7 +82,7 @@ struct EffectsPicker: View {
                         }
                         VStack {
                             Button(action: {
-                                // do distortion
+                                self.showingDelayView.toggle()
                             }) {
                                 Image(systemName: "tropicalstorm")
                                     .renderingMode(.original)
@@ -92,7 +93,10 @@ struct EffectsPicker: View {
                                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
    
                             }
-                            Text("Distortion")
+                            .sheet(isPresented: $showingDelayView) {
+                                DelayView()
+                            }
+                            Text("Delay")
                                 .font(.caption)
                         }
                     }

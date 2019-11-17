@@ -33,6 +33,7 @@ struct PitchView: View {
                         Slider(value: $pitch, in: -2400...2400, step: 100)
                         Text("Your pitch shift is \(pitch, specifier: "%.f") cents")
                     }
+                    
                 }
                 if(audioPlayer.isPlaying == false) {
                     Button("Play Recording") {
