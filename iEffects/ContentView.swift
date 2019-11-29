@@ -63,7 +63,7 @@ struct ContentView: View {
                             .frame(width: 50, height: 50)
                             .opacity(0.7)
                         }
-                        Text("Skip")
+                        Text("Next")
                         
                         
                     }

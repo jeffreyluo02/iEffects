@@ -11,10 +11,12 @@ import SwiftUI
 struct EffectsPicker: View {
     
     @ObservedObject var audioRecorder : AudioRecorder
-    @State private var showingPlaybackView = false
     @State private var showingPitchView = false
     @State private var showingReverbView = false
     @State private var showingDelayView = false
+    @State private var showingSpeedView = false
+    @State private var showingDistortionView = false
+    @State private var showingRecordingsList = false
     
     var body: some View {
         NavigationView {
@@ -24,7 +26,7 @@ struct EffectsPicker: View {
                     HStack(spacing: 20) {
                         VStack {
                             Button(action: {
-                                self.showingPlaybackView.toggle()
+                                self.showingRecordingsList.toggle()
                             }) {
                                 Image(systemName: "wind")
                                     .renderingMode(.original)
@@ -33,12 +35,12 @@ struct EffectsPicker: View {
                                     .frame(width: 100, height: 100)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
-    
+                                
                             }
-                            .sheet(isPresented: $showingPlaybackView) {
-                                PlaybackView()
+                            .sheet(isPresented: $showingRecordingsList) {
+                                RecordingsList()
                             }
-                            Text("Playback")
+                            Text("Recordings")
                                 .font(.caption)
                         }
                         VStack {
@@ -72,7 +74,7 @@ struct EffectsPicker: View {
                                     .frame(width: 100, height: 100)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
-                 
+                                
                             }
                             .sheet(isPresented: $showingReverbView) {
                                 ReverbView()
@@ -91,7 +93,7 @@ struct EffectsPicker: View {
                                     .frame(width: 100, height: 100)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
-   
+                                
                             }
                             .sheet(isPresented: $showingDelayView) {
                                 DelayView()
@@ -103,8 +105,8 @@ struct EffectsPicker: View {
                     HStack(spacing: 20) {
                         VStack {
                             Button(action: {
-                                // do speed
-                                }) {
+                                self.showingSpeedView.toggle()
+                            }) {
                                 Image(systemName: "flame")
                                     .renderingMode(.original)
                                     .resizable()
@@ -112,14 +114,17 @@ struct EffectsPicker: View {
                                     .frame(width: 100, height: 100)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
-        
-                                }
-                                Text("Speed Change")
-                                    .font(.caption)
+                                
                             }
+                            .sheet(isPresented: $showingSpeedView) {
+                                SpeedView()
+                            }
+                            Text("Speed Change")
+                                .font(.caption)
+                        }
                         VStack {
                             Button(action: {
-                                // do distortion
+                                self.showingDistortionView.toggle()
                             }) {
                                 Image(systemName: "tropicalstorm")
                                     .renderingMode(.original)
@@ -129,6 +134,9 @@ struct EffectsPicker: View {
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
                             }
+                            .sheet(isPresented: $showingDistortionView) {
+                                DistortionView()
+                            }
                             Text("Distortion")
                                 .font(.caption)
                         }
@@ -137,9 +145,6 @@ struct EffectsPicker: View {
             }
         }
         .navigationBarTitle("iEffects", displayMode: .inline)
-        .navigationBarItems(trailing: NavigationLink(destination: RecordingsList(audioRecorder: self.audioRecorder)) {
-                Text("Recordings")
-        })
     }
 }
 
