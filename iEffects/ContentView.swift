@@ -57,15 +57,13 @@ struct ContentView: View {
                     VStack {
                     NavigationLink(destination: EffectsPicker(audioRecorder: audioRecorder)) {
                         Image(systemName: "arrow.right")
-                        .resizable()
+                            .resizable()
                             .renderingMode(.original)
-                        .scaledToFit()
+                            .scaledToFit()
                             .frame(width: 50, height: 50)
                             .opacity(0.7)
                         }
                         Text("Next")
-                        
-                        
                     }
                 }
             }

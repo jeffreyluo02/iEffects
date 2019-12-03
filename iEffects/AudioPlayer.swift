@@ -17,10 +17,23 @@ class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
     var audioEngine: AVAudioEngine!
     var audioFile: AVAudioFile!
     
+    func createSession() {
+        let audioSession = AVAudioSession.sharedInstance()
+        // define type for our recording session and activate it, if this fails, output error
+        do {
+            try audioSession.setCategory(.playback, mode: .default)
+            try audioSession.setActive(true)
+            try AVAudioSession.sharedInstance().overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
+        } catch {
+            print("Failed to set up recording session")
+        }
+    }
+    
     // plays the audio without any manipulation
     func startPlayBack(audio: URL) {
         do {
             // setup audio player with file
+            createSession()
             audioEngine = AVAudioEngine()
             audioFile = try AVAudioFile(forReading: audio)
         } catch {
@@ -51,6 +64,7 @@ class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
     func playAudioWithVariablePitch(audio: URL, pitch: Float) {
         do {
             // setup audio player with file
+            createSession()
             audioEngine = AVAudioEngine()
             audioFile = try AVAudioFile(forReading: audio)
         } catch {
@@ -86,6 +100,7 @@ class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
     func playAudioWithReverb(audio: URL, wetness: Float) {
         do {
             // setup audio player with file
+            createSession()
             audioEngine = AVAudioEngine()
             audioFile = try AVAudioFile(forReading: audio)
         } catch {
@@ -121,6 +136,7 @@ class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
     func playAudioWithDelay(audio: URL, delayTime: TimeInterval, feedback: Float, lowPassCutoff: Float, wetDryMix: Float) {
         do {
             // setup audio player with file
+            createSession()
             audioEngine = AVAudioEngine()
             audioFile = try AVAudioFile(forReading: audio)
         } catch {
@@ -160,6 +176,7 @@ class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
     func playAudioWithSpeedChange(audio: URL, rate: Float) {
         do {
             // setup audio player with file
+            createSession()
             audioEngine = AVAudioEngine()
             audioFile = try AVAudioFile(forReading: audio)
         } catch {
@@ -195,6 +212,7 @@ class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
     func playAudioWithUnitDistortion(audio: URL, preGain: Float, wetDryMix: Float) {
         do {
             // setup audio player with file
+            createSession()
             audioEngine = AVAudioEngine()
             audioFile = try AVAudioFile(forReading: audio)
         } catch {

@@ -22,123 +22,117 @@ struct EffectsPicker: View {
         NavigationView {
             ZStack {
                 LinearGradient(gradient: Gradient(colors: [.gray, .white]), startPoint: .bottom, endPoint: .top).edgesIgnoringSafeArea(.all)
-                VStack {
-                    HStack(spacing: 20) {
+                VStack(spacing: 50) {
+                    HStack(spacing: 50) {
                         VStack {
                             Button(action: {
                                 self.showingRecordingsList.toggle()
                             }) {
-                                Image(systemName: "wind")
+                                Image(systemName: "headphones")
                                     .renderingMode(.original)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 100, height: 100)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
-                                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
+                                    //.overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 2))
                                 
                             }
                             .sheet(isPresented: $showingRecordingsList) {
                                 RecordingsList()
                             }
                             Text("Recordings")
-                                .font(.caption)
                         }
                         VStack {
                             Button(action: {
                                 self.showingPitchView.toggle()
                             }) {
-                                Image(systemName: "snow")
+                                Image(systemName: "skew")
                                     .renderingMode(.original)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 100, height: 100)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
-                                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
+                                    //.overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 2))
                             }
                             .sheet(isPresented: $showingPitchView) {
                                 PitchView()
                             }
                             Text("Pitch")
-                                .font(.caption)
                         }
                     }
-                    HStack(spacing: 20) {
+                    HStack(spacing: 50) {
                         VStack {
                             Button(action: {
                                 self.showingReverbView.toggle()
                             }) {
-                                Image(systemName: "flame")
+                                Image(systemName: "hifispeaker")
                                     .renderingMode(.original)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 100, height: 100)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
-                                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
+                                    //.overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 2))
                                 
                             }
                             .sheet(isPresented: $showingReverbView) {
                                 ReverbView()
                             }
                             Text("Reverb")
-                                .font(.caption)
                         }
                         VStack {
                             Button(action: {
                                 self.showingDelayView.toggle()
                             }) {
-                                Image(systemName: "tropicalstorm")
+                                Image(systemName: "dot.radiowaves.right")
                                     .renderingMode(.original)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 100, height: 100)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
-                                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
+                                    //.overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 2))
                                 
                             }
                             .sheet(isPresented: $showingDelayView) {
                                 DelayView()
                             }
                             Text("Delay")
-                                .font(.caption)
                         }
                     }
-                    HStack(spacing: 20) {
+                    HStack(spacing: 50) {
                         VStack {
                             Button(action: {
                                 self.showingSpeedView.toggle()
                             }) {
-                                Image(systemName: "flame")
+                                Image(systemName: "hare")
                                     .renderingMode(.original)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 100, height: 100)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
-                                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
+                                    //.overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 2))
                                 
                             }
                             .sheet(isPresented: $showingSpeedView) {
                                 SpeedView()
                             }
                             Text("Speed Change")
-                                .font(.caption)
                         }
                         VStack {
                             Button(action: {
                                 self.showingDistortionView.toggle()
                             }) {
-                                Image(systemName: "tropicalstorm")
+                                Image(systemName: "stopwatch")
                                     .renderingMode(.original)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 100, height: 100)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
-                                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
+                                    //.overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 2))
                             }
                             .sheet(isPresented: $showingDistortionView) {
                                 DistortionView()
                             }
                             Text("Distortion")
-                                .font(.caption)
                         }
                     }
                 }

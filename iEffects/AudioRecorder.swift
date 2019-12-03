@@ -41,6 +41,7 @@ class AudioRecorder: NSObject, ObservableObject {
         do {
             try recordingSession.setCategory(.playAndRecord, mode: .default)
             try recordingSession.setActive(true)
+            try AVAudioSession.sharedInstance().overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
         } catch {
             print("Failed to set up recording session")
         }
@@ -87,7 +88,7 @@ class AudioRecorder: NSObject, ObservableObject {
             recordings.append(recording)
         }
         // sort the recordings by date
-        recordings.sort(by: { $0.createdAt.compare($1.createdAt) == .orderedAscending})
+        recordings.sort(by: { $0.createdAt.compare($1.createdAt) == .orderedDescending})
         
         // update all observing views
         objectWillChange.send(self)
@@ -103,7 +104,6 @@ class AudioRecorder: NSObject, ObservableObject {
                 print("File could not be deleted!")
             }
         }
-        
         fetchRecordings()
         
     }
