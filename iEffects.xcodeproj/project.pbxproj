@@ -20,7 +20,6 @@
 		8D4F651E237BBF09003A13C3 /* RecordingsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4F651D237BBF09003A13C3 /* RecordingsList.swift */; };
 		8D4F6520237BC414003A13C3 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4F651F237BC414003A13C3 /* AudioPlayer.swift */; };
 		8D5159E42387553000AD9415 /* DistortionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5159E32387553000AD9415 /* DistortionView.swift */; };
-		8DA713EB237F8DB300C3ACDE /* PlaybackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA713EA237F8DB300C3ACDE /* PlaybackView.swift */; };
 		8DA713ED237F8EBE00C3ACDE /* PitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA713EC237F8EBE00C3ACDE /* PitchView.swift */; };
 		8DD630622385831B00FBF5B3 /* SpeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD630612385831B00FBF5B3 /* SpeedView.swift */; };
 		8DDFA857237DC5BC0033E603 /* EffectsPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDFA856237DC5BC0033E603 /* EffectsPicker.swift */; };
@@ -44,7 +43,6 @@
 		8D4F651D237BBF09003A13C3 /* RecordingsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsList.swift; sourceTree = "<group>"; };
 		8D4F651F237BC414003A13C3 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		8D5159E32387553000AD9415 /* DistortionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistortionView.swift; sourceTree = "<group>"; };
-		8DA713EA237F8DB300C3ACDE /* PlaybackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackView.swift; sourceTree = "<group>"; };
 		8DA713EC237F8EBE00C3ACDE /* PitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchView.swift; sourceTree = "<group>"; };
 		8DD630612385831B00FBF5B3 /* SpeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedView.swift; sourceTree = "<group>"; };
 		8DDFA856237DC5BC0033E603 /* EffectsPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectsPicker.swift; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 				8DD630612385831B00FBF5B3 /* SpeedView.swift */,
 				8DE8D47C2381021200DDA32E /* ReverbView.swift */,
 				8D5159E32387553000AD9415 /* DistortionView.swift */,
-				8DA713EA237F8DB300C3ACDE /* PlaybackView.swift */,
 				8D4F6513237BAAFB003A13C3 /* AudioRecorder.swift */,
 				8D4F651F237BC414003A13C3 /* AudioPlayer.swift */,
 				8D4F651B237BBB53003A13C3 /* Helper.swift */,
@@ -185,7 +182,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DA713EB237F8DB300C3ACDE /* PlaybackView.swift in Sources */,
 				8DDFA857237DC5BC0033E603 /* EffectsPicker.swift in Sources */,
 				8D4F6516237BB042003A13C3 /* Extensions.swift in Sources */,
 				8D4F651C237BBB53003A13C3 /* Helper.swift in Sources */,
